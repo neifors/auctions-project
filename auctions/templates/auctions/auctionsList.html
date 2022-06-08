@@ -10,10 +10,23 @@
     {% endif %}
 </h1>
 
-<p>Here are all the auctions:</p>
+<p>Here are all the Active auctions:</p>
 
 <ul>
-    {% for auction in auctions %}
+    {% for auction in active_auctions %}
+    <li>
+        <a href="{% url 'auctions-show' id=auction.id %}">{{auction.title}}</a><br>
+        <p>{{auction.description}}</p>
+        <img  style="width: 100px; height: 100px;" src="{{auction.photo.url}}" alt="image">
+    </li>
+    {% endfor %}
+</ul>
+
+<p>Here are all the CLOSED auctions:</p>
+
+
+<ul>
+    {% for auction in inactive_auctions %}
     <li>
         <a href="{% url 'auctions-show' id=auction.id %}">{{auction.title}}</a><br>
         <p>{{auction.description}}</p>

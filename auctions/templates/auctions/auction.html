@@ -2,32 +2,55 @@
 
 {% block content %}
 
-<h1>{{auction.title}}</h1>
+{% if user.is_authenticated and auction.active %}
+    {% if user == auction.user %}
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="auction" value="{{auction.id}}" hidden>
+            <input type="submit" value="Close Auction">
+        </form>
+    {% endif %}
+{% endif %}
+
+{% if not auction.active and last_bid.user == user %}
+    <h1>YOU ARE THE WINNER</h1>
+{% endif %}
+
+<h2>{{auction.title}}</h2>
 <img style="width: 200px; height: 200px;" src="{{ auction.photo.url }}" alt="Product img">
 <p>Listed by {{ auction.user }}</p>
 <p>Description: {{ auction.description }}</p>
 <p>Date: {{ auction.date }}</p>
 <p>Initial price: £{{ auction.initial_price }}</p>
 <p>Last bid: £{{ last_bid }} <span>({{ last_bid.user }})</span></p>
-{% if user.is_authenticated %}
+
+{% if user.is_authenticated and auction.active %}
+    <h3>How much you would pay for this?: </h3>
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ bid_form.as_p }}
         <input type="submit" value="Place Bid">
     </form> 
 {% endif %}
+
+{% if error %}
+    <p>{{error}}</p>
+{% endif %}
+
 <p>Total bids: {{ total_bids }}</p>
 <p>Category: {{ auction.category }}</p>
-<h3>Comments:</h3>
 
-{% for comment in comments %}
+{% if comments %}
+    <h3>Comments:</h3>
+    {% for comment in comments %}
+        <p><strong>{{ comment.title }} -- by {{ comment.user }}</strong></p>
+        <p>{{ comment.message }}</p>
+    {% endfor %}
+{% else%}
+    <h4>There are no comments yet</h4>
+{% endif %}
 
-    <p><strong>{{ comment.title }} -- by {{ comment.user }}</strong></p>
-    <p>{{ comment.message }}</p>
-
-{% endfor %}
-<!-- <h3>How much you would pay for this?: </h3> -->
-{% if user.is_authenticated %}
+{% if user.is_authenticated and auction.active %}
 
 <h3>Do you want to leave a comment?: </h3>
 <div class="wrapper-of-wrapper">

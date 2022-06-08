@@ -19,9 +19,14 @@ class Auction(models.Model):
    date = models.DateField(default=datetime.date.today)
    photo = models.ImageField(upload_to='pics/', null=False)
    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True)
+   active = models.BooleanField(default=True)
 
    def __str__(self):
        return self.title
+   
+   def deactivate(self):
+       self.active = False
+       return self
 
 class Bid(models.Model):
    user = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
