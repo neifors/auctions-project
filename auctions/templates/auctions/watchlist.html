@@ -3,4 +3,14 @@
 {% block content %}
    <h1>WATCHLIST</h1>
 
+   <ul>
+      {% for w in my_watchlist %}
+      <li>
+          <a href="{% url 'auctions-show' id=w.auction.id %}">{{w.auction.title}}</a><br>
+          <p>{{w.auction.description}}</p>
+          <img  style="width: 100px; height: 100px;" src="{{w.auction.photo.url}}" alt="image">
+      </li>
+      {% endfor %}
+  </ul>
+
 {% endblock %}

@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 
 from .forms import NewAuctionForm, NewBidForm, NewCommentForm
 
-from .models import Auction, Bid, Comment
+from .models import Auction, Bid, Comment, Watchlist
 
 def home(request):
     data = { 
@@ -21,6 +21,8 @@ def show(request, id):
         last_bid = ['--']
     error = ""
     comments = Comment.objects.filter(auction_id = id)
+    is_in_watchlist = Watchlist.objects.filter(user=request.user, auction=auction)
+    # is_in_watchlist = list(filter(lambda w: w.auction == auction, user_watchlist))
     
     # POST method cases
     if request.method == 'POST':
@@ -59,7 +61,18 @@ def show(request, id):
             deactivated = auction.deactivate()
             deactivated.save()
             return redirect ('auctions-home')
+        
+        # If adding to watchlist
+        elif request.POST['watchlist'] == "True":
+            if not is_in_watchlist:
+                Watchlist.objects.create(user_id=request.user.id,auction_id=id)
+            return redirect ('auctions-show', id=id)
 
+        # If removing from watchlist
+        elif request.POST['watchlist'] == "False":
+            is_in_watchlist.delete()
+            return redirect ('auctions-show', id=id)
+        
     # Data to send to frontend if request method is GET or if any of the POST cases ended with an error
     data = {
         'total_bids' : len(bids),
@@ -68,7 +81,8 @@ def show(request, id):
         'auction': auction,
         'bid_form' : NewBidForm(),
         'comment_form' : NewCommentForm(),
-        'error': error
+        'error': error,
+        'is_in_watchlist': True if len(is_in_watchlist) else False
     }
     return render(request, 'auctions/auction.html', data)
 
@@ -94,7 +108,10 @@ def create(request):
 
 @login_required
 def watchlist(request):
-    return render(request, 'auctions/watchlist.html')
+    data = {
+        'my_watchlist' : Watchlist.objects.filter(user=request.user)
+    }
+    return render(request, 'auctions/watchlist.html', data)
 
 @login_required
 def my_listings(request):

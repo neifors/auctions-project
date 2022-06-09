@@ -7,9 +7,28 @@
         <form method="POST">
             {% csrf_token %}
             <input type="text" name="auction" value="{{auction.id}}" hidden>
+            <input type="text" name="watchlist" value="" hidden>
             <input type="submit" value="Close Auction">
         </form>
     {% endif %}
+{% endif %}
+
+{% if user.is_authenticated and auction.active and not is_in_watchlist %}
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="auction" value="" hidden>
+        <input type="text" name="watchlist" value="True" hidden>
+        <input type="submit" value="+ Watchlist">
+    </form>
+{% endif %}
+
+{% if user.is_authenticated and auction.active and is_in_watchlist %}
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="auction" value="" hidden>
+        <input type="text" name="watchlist" value="False" hidden>
+        <input type="submit" value="- Watchlist">
+    </form>
 {% endif %}
 
 {% if not auction.active and last_bid.user == user %}

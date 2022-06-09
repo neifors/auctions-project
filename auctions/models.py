@@ -46,3 +46,8 @@ class Comment(models.Model):
    
    def __str__(self):
        return self.title
+
+class Watchlist(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
+    auction = models.ForeignKey(Auction, on_delete=models.CASCADE, null=False)
+
