@@ -1,16 +1,19 @@
 {% extends "auctions/layout.html" %}
 
 {% block content %}
-   <h1>WATCHLIST</h1>
+<h3>MY WATCHLIST</h3>
 
-   <ul>
-      {% for w in my_watchlist %}
-      <li>
-          <a href="{% url 'auctions-show' id=w.auction.id %}">{{w.auction.title}}</a><br>
-          <p>{{w.auction.description}}</p>
-          <img  style="width: 100px; height: 100px;" src="{{w.auction.photo.url}}" alt="image">
-      </li>
-      {% endfor %}
-  </ul>
-
+<div class="auctions-wrapper">
+    {% for w in my_watchlist %}
+        <a href="{% url 'auctions-show' id=w.auction.id %}">
+            <div class="auction-wrapper">
+                <div>
+                    <h2>{{w.auction.title}}</h2>
+                    <img src="{{w.auction.photo.url}}" alt="image">
+                </div>
+                <p><span>Description: </span>{{w.auction.description}}</p>  
+            </div>
+        </a>
+    {% endfor %}
+</div>
 {% endblock %}

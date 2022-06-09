@@ -1,38 +1,29 @@
 {% extends "auctions/layout.html" %}
+{% load static %}
 
 {% block content %}
 
-<h1>Welcome to Sun-Commerce
+<h1 id="welcome-title">Welcome to <img src="{% static 'img/title.png' %}" alt="title">
     {% if user.is_authenticated %}
-    , {{user}}!
+    , <span>{{user}}</span>!
     {% else %}
     !
     {% endif %}
 </h1>
 
-<p>Here are all the Active auctions:</p>
-
-<ul>
-    {% for auction in active_auctions %}
-    <li>
-        <a href="{% url 'auctions-show' id=auction.id %}">{{auction.title}}</a><br>
-        <p>{{auction.description}}</p>
-        <img  style="width: 100px; height: 100px;" src="{{auction.photo.url}}" alt="image">
-    </li>
+<div class="auctions-wrapper">
+    {% for auction in auctions %}
+        <a href="{% url 'auctions-show' id=auction.id %}">
+            <div class="auction-wrapper">
+                <div>
+                    <h2>{{auction.title}}</h2>
+                    <img src="{{auction.photo.url}}" alt="image">
+                </div>
+                <p><span>Description: </span>{{auction.description}}</p> 
+            </div>
+        </a>
     {% endfor %}
-</ul>
+</div>
 
-<p>Here are all the CLOSED auctions:</p>
-
-
-<ul>
-    {% for auction in inactive_auctions %}
-    <li>
-        <a href="{% url 'auctions-show' id=auction.id %}">{{auction.title}}</a><br>
-        <p>{{auction.description}}</p>
-        <img  style="width: 100px; height: 100px;" src="{{auction.photo.url}}" alt="image">
-    </li>
-    {% endfor %}
-</ul>
 
 {% endblock content %}

@@ -1,16 +1,20 @@
 {% extends "auctions/layout.html" %}
 
 {% block content %}
-   <h1>MY LISTINGS</h1>
+<h3>MY LISTINGS</h3>
 
-   <ul>
-      {% for auction in my_auctions %}
-      <li>
-          <a href="{% url 'auctions-show' id=auction.id %}">{{auction.title}}</a><br>
-          <p>{{auction.description}}</p>
-          <img  style="width: 100px; height: 100px;" src="{{auction.photo.url}}" alt="image">
-      </li>
-      {% endfor %}
-  </ul>
+<div class="auctions-wrapper">
+    {% for auction in my_auctions %}
+        <a href="{% url 'auctions-show' id=auction.id %}">
+            <div class="auction-wrapper">
+                <div>
+                    <h2>{{auction.title}}</h2>
+                    <img src="{{auction.photo.url}}" alt="image">
+                </div>
+                <p><span>Description: </span>{{auction.description}}</p> 
+            </div>
+        </a>
+    {% endfor %}
+</div>
 
 {% endblock %}

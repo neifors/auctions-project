@@ -5,21 +5,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Joan&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="icon" href="{% static 'img/icon.png' %}">
     <title>Commerce</title>
 </head>
 <body>
     <nav>
-        <div class="linkset left">
+        <div id="links-wrapper">
+            <img src="{% static 'img/icon.png' %}" alt="logo">
             {% if user.is_authenticated %}
                 <a href="{% url 'auctions-home' %}">Active Listing</a>
+                <a href="{% url 'auctions-closed' %}">Closed Listing</a>
                 <a href="{% url 'auctions-create' %}">Create Listing</a>
                 <a href="{% url 'auctions-watchlist' %}">Whachlist</a>
-                <a href="{% url 'auctions-mylistings' %}">My Listings</a>
+                <a href="{% url 'auctions-mylistings' %}">My Listing</a>
                 <a href="{% url 'auctions-categories' %}">Categories</a>
                 <a href="{% url 'logout' %}">Logout</a>
             {% else %}
                 <a href="{% url 'auctions-home' %}">Active Listing</a>
+                <a href="{% url 'auctions-closed' %}">Closed Listing</a>
                 <a href="{% url 'auctions-categories' %}">Categories</a>
                 <a href="{% url 'signup' %}">Sign up</a>
                 <a href="{% url 'login' %}">Login</a>

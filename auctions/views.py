@@ -7,7 +7,7 @@ from .models import Auction, Bid, Category, Comment, Watchlist
 
 def home(request):
     data = { 
-        'active_auctions': Auction.objects.filter(active=True),
+        'auctions': Auction.objects.filter(active=True),
         'inactive_auctions': Auction.objects.filter(active=False)
     }
     return render(request, 'auctions/auctionsList.html', data)
@@ -21,8 +21,11 @@ def show(request, id):
         last_bid = ['--']
     error = ""
     comments = Comment.objects.filter(auction_id = id)
-    is_in_watchlist = Watchlist.objects.filter(user=request.user, auction=auction)
-    # is_in_watchlist = list(filter(lambda w: w.auction == auction, user_watchlist))
+    if request.user.is_authenticated:
+        is_in_watchlist = Watchlist.objects.filter(user=request.user, auction=auction)
+    else:
+        is_in_watchlist = []
+
     
     # POST method cases
     if request.method == 'POST':
@@ -132,3 +135,9 @@ def by_category(request, id):
         'auctions' : Auction.objects.filter(category_id = id)
     }
     return render(request, 'auctions/by_category.html', data)
+
+def closed(request):
+    data = { 
+        'auctions': Auction.objects.filter(active=False)
+    }
+    return render(request, 'auctions/auctionsList.html', data)

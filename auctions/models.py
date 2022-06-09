@@ -17,7 +17,7 @@ class Auction(models.Model):
    description = models.TextField(null=False)
    initial_price = models.IntegerField(null=False)
    date = models.DateField(default=datetime.date.today)
-   photo = models.ImageField(upload_to='pics/', null=False)
+   photo = models.ImageField(upload_to='pics/', null=True, blank=True)
    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True)
    active = models.BooleanField(default=True)
 
