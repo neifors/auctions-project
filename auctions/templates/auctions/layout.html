@@ -16,9 +16,11 @@
                 <a href="{% url 'auctions-create' %}">Create Listing</a>
                 <a href="{% url 'auctions-watchlist' %}">Whachlist</a>
                 <a href="{% url 'auctions-mylistings' %}">My Listings</a>
+                <a href="{% url 'auctions-categories' %}">Categories</a>
                 <a href="{% url 'logout' %}">Logout</a>
             {% else %}
                 <a href="{% url 'auctions-home' %}">Active Listing</a>
+                <a href="{% url 'auctions-categories' %}">Categories</a>
                 <a href="{% url 'signup' %}">Sign up</a>
                 <a href="{% url 'login' %}">Login</a>
             {% endif %}

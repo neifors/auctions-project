@@ -7,5 +7,7 @@ urlpatterns = [
     path('<int:id>/', views.show, name='auctions-show'),
     path("new/", views.create, name="auctions-create"),
     path("watchlist/", views.watchlist, name="auctions-watchlist"),
-    path("mylistings/", views.my_listings, name="auctions-mylistings")
+    path("mylistings/", views.my_listings, name="auctions-mylistings"),
+    path("categories/", views.categories, name='auctions-categories'),
+    path('categories/<int:id>/', views.by_category, name='auctions-category')
 ]

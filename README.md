@@ -13,9 +13,9 @@ Complete the implementation of your auction site. You must fulfill the following
    - [x] If a user is signed in on a closed listing page, and the user has won that auction, the page should say so.
    - [x] Users who are signed in should be able to add comments to the listing page. The listing page should display all comments that have been made on the listing.
 
-- [ ] Watchlist: Users who are signed in should be able to visit a Watchlist page, which should display all of the listings that a user has added to their watchlist. Clicking on any of those listings should take the user to that listing’s page.
+- [x] Watchlist: Users who are signed in should be able to visit a Watchlist page, which should display all of the listings that a user has added to their watchlist. Clicking on any of those listings should take the user to that listing’s page.
 
-- [ ] Categories: Users should be able to visit a page that displays a list of all listing categories. Clicking on the name of any category should take the user to a page that displays all of the active listings in that category.
+- [x] Categories: Users should be able to visit a page that displays a list of all listing categories. Clicking on the name of any category should take the user to a page that displays all of the active listings in that category.
 
 - [x] Django Admin Interface: Via the Django admin interface, a site administrator should be able to view, add, edit, and delete any listings, comments, and bids made on the site.
 
@@ -26,3 +26,10 @@ Complete the implementation of your auction site. You must fulfill the following
 - You’ll likely need to create some Django forms for various parts of this web application.
 - Adding the @login_required decorator on top of any view will ensure that only a user who is logged in can access that view.
 - You’re welcome to modify the CSS as much as you’d like, to make the website your own! Some sample screenshots are shown at the top of this page. These are meant only to be examples: your application need not be aesthetically the same as the screenshots here (you’re encouraged to be creative!).
+
+
+## Extra (added by myself)
+
+- [ ] Manage messages to user like if you try to see all the active listings of one specific category and there is no one, user should see a message saying "No active listings for this category"
+
+- [ ] Styling

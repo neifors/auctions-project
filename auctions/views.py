@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 
 from .forms import NewAuctionForm, NewBidForm, NewCommentForm
 
-from .models import Auction, Bid, Comment, Watchlist
+from .models import Auction, Bid, Category, Comment, Watchlist
 
 def home(request):
     data = { 
@@ -119,3 +119,16 @@ def my_listings(request):
         'my_auctions' : Auction.objects.filter(user=request.user)
     }
     return render(request, 'auctions/myListings.html', data)
+
+def categories(request):
+    data = {
+        'categories' : Category.objects.all()
+    }
+    return render(request, 'auctions/categories.html',data)
+
+
+def by_category(request, id):
+    data = {
+        'auctions' : Auction.objects.filter(category_id = id)
+    }
+    return render(request, 'auctions/by_category.html', data)
