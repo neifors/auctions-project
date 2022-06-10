@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-o7^jmbx7__6%2i0b3)2gi!efl&j(6utq40+)2)%w3uz=boel-*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['sun-commerce.herokuapp.com', '127.0.0.1:8000']
+ALLOWED_HOSTS = ['sun-commerce.herokuapp.com', '127.0.0.1']
 CSRF_TRUSTED_ORIGINS = ['https://sun-commerce.herokuapp.com']
 
 
