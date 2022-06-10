@@ -6,25 +6,42 @@ body {
 nav div#links-wrapper {
    display: flex;
    align-items: center;
-   justify-content: space-around;
+   justify-content: space-between;
    background-color: #c7c76b;
-   padding: 10px;
+   padding: 0;
    margin: 0;
 }
 
-nav div#links-wrapper img {
-   width: 100px;
+nav div#links-wrapper div.main-menu {
+   display: flex;
+   align-items: center;
+   justify-content: flex-start;
    margin: 0;
+}
+
+nav div#links-wrapper div.main-menu img {
+   width: 35px;
+   margin: 5px;
    padding: 0;
    border-radius: 50%;
 }
 
-
 nav div#links-wrapper a {
    text-decoration: none;
-   font-size: 24px;
-   font-weight: bold;
+   font-size: 20px;
    color: white;
+   margin: 0 17px;
+   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+nav div#links-wrapper a.active {
+   background-color: #ff4d4d;
+   margin: 0 0px;
+   padding: 14px 17px;
+}
+
+nav div#links-wrapper a.active:hover {
+   color: #ffe066;
 }
 
 nav div#links-wrapper a:hover {
@@ -40,11 +57,15 @@ h1#welcome-title {
    font-weight: lighter;
 }
 
-h1#welcome-title img {
+h1#welcome-title img#title {
    position: relative;
    border-radius: 10px;
    top: 11px;
    width: 300px;
+}
+h1#welcome-title img#icon {
+   border-radius: 10px;
+   width: 60px;
 }
 
 h1#welcome-title span {
@@ -54,7 +75,8 @@ h1#welcome-title span {
 h3 {
    text-align: center;
    font-size: 30px;
-   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+   font-family: 'Joan', serif;
+   font-weight: lighter;
    color: #ff4d4d;
 }
 
@@ -75,8 +97,8 @@ div.auctions-wrapper a div.auction-wrapper {
    display: flex;
    flex-direction: column;
    align-items: center;
-   justify-content: space-between;
-   height: 350px;
+   justify-content: flex-start;
+   height: 375px;
    width: 300px;
    border-radius: 8px;
    /* background-color: #ffe066; */
@@ -85,33 +107,55 @@ div.auctions-wrapper a div.auction-wrapper {
    margin: 20px;
 }
 
-div.auctions-wrapper a div.auction-wrapper h2 {
-   color: #ff9933;
-   font-size: 25px;
-   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-   margin-bottom: 0;
+div.auctions-wrapper a div.auction-wrapper div.list-info-wrapper div.title-price {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   width: 270px;
 }
 
-div.auctions-wrapper a div.auction-wrapper div {
+div.auctions-wrapper a div.auction-wrapper div.list-info-wrapper div.title-price h2 {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   color: #ff9933;
+   font-size: 22px;
+   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   margin: 5px 0;
+}
+
+
+div.auctions-wrapper a div.auction-wrapper div.list-info-wrapper div.title-price button {
+   border: none;
+   border-radius: 7px;
+   background-color: #ff4d4d;
+   align-self: left;
+   margin-left: 10px;
+}
+
+div.auctions-wrapper a div.auction-wrapper div.list-info-wrapper {
    display: flex;
    flex-direction: column;
    align-items: center;
    justify-content: space-between;
-}
-
-div.auctions-wrapper a div.auction-wrapper div img {
-   height: 150px;
-   width: 150px;
+   padding: 0;
    margin: 0;
-   border: 1px solid white;
+   font-size: 15px;
 }
 
-div.auctions-wrapper a div.auction-wrapper p span {
+div.auctions-wrapper a div.auction-wrapper div.list-img-wrapper img {
+   height: 250px;
+   max-width: 300px;
+   margin: 0;
+   border-radius: 6px 6px 0 0;
+}
+
+div.auctions-wrapper a div.auction-wrapper div.list-info-wrapper p span {
    font-weight: bold;
 }
 
-div.auctions-wrapper a div.auction-wrapper p {
-   height: 50%;
+div.auctions-wrapper a div.auction-wrapper div.list-info-wrapper p {
    width: 90%;
-   padding: 15px 10px;
+   padding: 0px 10px;
+   margin: 0;
 } 

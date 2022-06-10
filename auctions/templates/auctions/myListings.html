@@ -7,11 +7,16 @@
     {% for auction in my_auctions %}
         <a href="{% url 'auctions-show' id=auction.id %}">
             <div class="auction-wrapper">
-                <div>
-                    <h2>{{auction.title}}</h2>
+                <div class="list-img-wrapper">
                     <img src="{{auction.photo.url}}" alt="image">
                 </div>
-                <p><span>Description: </span>{{auction.description}}</p> 
+                <div class="list-info-wrapper">
+                    <div class="title-price">
+                        <h2>{{auction.title}} </h2>
+                        <button> £{{auction.initial_price}}</button>
+                    </div>
+                    <p><span>Description: </span>{{auction.description}}</p> 
+                </div>
             </div>
         </a>
     {% endfor %}

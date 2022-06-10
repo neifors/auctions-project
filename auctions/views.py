@@ -138,6 +138,6 @@ def by_category(request, id):
 
 def closed(request):
     data = { 
-        'auctions': Auction.objects.filter(active=False)
+        'closed_auctions': Auction.objects.filter(active=False)
     }
     return render(request, 'auctions/auctionsList.html', data)
