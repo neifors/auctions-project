@@ -159,3 +159,109 @@ div.auctions-wrapper a div.auction-wrapper div.list-info-wrapper p {
    padding: 0px 10px;
    margin: 0;
 } 
+
+h3#new-auction-title {
+   margin-bottom: 0;
+}
+
+div.form-wrapper {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+
+form.form {
+   width: 400px;
+   border: 2px solid #ff4d4d;
+   border-radius: 7px;
+   padding: 15px;
+}
+
+form.form input[type='submit'] {
+   background-color: #ff4d4d;
+   border: none;
+   border-radius: 7px;
+   padding: 5px 8px;
+   cursor: pointer;
+   position: relative;
+   left: 168px;
+}
+
+form.form p {
+   display: flex;
+   flex-direction: column;
+}
+
+form.form p label{
+   color: #ff9933;
+   font-weight: bold;
+}
+
+form.form p textarea {
+   resize: none;
+   height: 8em;
+   width: 29.5em;
+}
+
+div#categories-wrapper {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-around;
+   margin: 20px;
+   padding-top: 50px;
+}
+
+div#categories-wrapper a {
+   text-decoration: none;
+}
+
+div#categories-wrapper a div.category-card {
+   width: 150px;
+   height: 150px;
+   border-radius: 7px;
+   margin: 20px;
+   margin-bottom: 0;
+}
+
+div#categories-wrapper a p.category-title {
+   text-align: center;
+   color:#ff4d4d;
+   font-family: 'Joan', serif;
+   font-size: 32px;
+   margin-top: 0px;
+}
+div#categories-wrapper a div.category-card img {
+   width: 150px;
+}
+
+div.logout-page-wrapper {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+}
+
+div.logout-page-wrapper a button {
+   background-color: #ff4d4d;
+   border: none;
+   border-radius: 7px;
+   padding: 5px 8px;
+   cursor: pointer;
+   font-size: 35px;
+}
+
+div.login-register-wrapper {
+   margin: 60px;
+}
+
+div.login-register-wrapper span {
+   margin-top:10px;
+   font-family: 'Joan', serif;
+}
+
+div.login-register-wrapper span a{
+   text-decoration: none;
+   color:#ff4d4d;
+   font-weight: bold;
+}

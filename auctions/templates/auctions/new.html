@@ -1,15 +1,14 @@
 {% extends "auctions/layout.html" %}
 
 {% block content %}
-<h1> New auction! </h1>
-<h2> Please enter the information for your auction below </h2>
-<div class="wrapper-of-wrapper">
-    <div class="form-wrapper">
-    <form method="POST" enctype="multipart/form-data">
+<h3 id="new-auction-title"> NEW AUCTION</h3>
+
+<div class="form-wrapper">
+    <form class="form" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="Create">
     </form>
 </div>
-</div>
+
 {% endblock content %}

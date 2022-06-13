@@ -1,15 +1,12 @@
 {% extends "auctions/layout.html" %}
 
 {% block content %}
-<div class="wrapper-of-wrapper">
-    <h1 id="bye-msg">Thank you for visiting our commerce! <br> Come again soon!</h1> <br>
-
-</div>
-<div class="wrapper-of-wrapper">
-
+<div class="logout-page-wrapper">
+    <h3 id="bye-msg">Thank you for visiting our commerce! <br> Come again soon!</h3> <br>
+    <a href='{% url "auctions-home" %}'><button>Home</button></a>
 </div>
 
-<div class="wrapper-of-wrapper"><a href='{% url "auctions-home" %}'><button>Home</button></a></div>
+
 
 
 {% endblock content %}
