@@ -14,7 +14,7 @@
         {% endif %}
     {% endif %}
 
-    {% if user.is_authenticated and auction.active and not is_in_watchlist %}
+    {% if user.is_authenticated and not is_in_watchlist %}
         <form  class="buttons" method="POST">
             {% csrf_token %}
             <input type="text" name="auction" value="" hidden>
@@ -23,7 +23,7 @@
         </form>
     {% endif %}
 
-    {% if user.is_authenticated and auction.active and is_in_watchlist %}
+    {% if user.is_authenticated and is_in_watchlist %}
         <form  class="buttons" method="POST">
             {% csrf_token %}
             <input type="text" name="auction" value="" hidden>
@@ -35,50 +35,64 @@
 {% if not auction.active and last_bid.user == user %}
     <h1 id="winner">YOU ARE THE WINNER!</h1>
 {% endif %}
-
-<h2>{{auction.title}}</h2>
-<img style="width: 200px; height: 200px;" src="{{ auction.photo.url }}" alt="Product img">
-<p>Listed by {{ auction.user }}</p>
-<p>Date: {{ auction.date }}</p>
-<p>Description: {{ auction.description }}</p>
-<p>Category: {{ auction.category }}</p>
-<p>Initial price: £{{ auction.initial_price }}</p>
-<p>Total bids: {{ total_bids }}</p>
-<p>Last bid: £{{ last_bid }} <span>({{ last_bid.user }})</span></p>
-
-{% if user.is_authenticated and auction.active %}
-<div class="bid-form-wrapper">
-    <h3>How much you would pay for this?: </h3>
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ bid_form.as_p }}
-        <input type="submit" value="Place Bid">
-    </form> 
-    {% if error %}
-        <p id="bid-error">{{error}}</p>
+<div class="auction-img-info">
+    <div class="auction-big-image">
+        <img class="auction-photo" style="max-height: 400px;
+            max-width: max-content;" src="{{ auction.photo.url }}" alt="Product img">
+    </div>
+    <div class="info">
+        <h3>{{auction.title}}</h3>
+        <p>Listed by {{ auction.user }}</p>
+        <p><strong>Date:</strong>  {{ auction.date }}</p>
+        <p><strong>Description:</strong> {{ auction.description }}</p>
+        <p><strong>Category:</strong> {{ auction.category }}</p>
+        <p><strong>Initial price:</strong> £{{ auction.initial_price }}</p>
+        <p><strong>Total bids:</strong> {{ total_bids }}</p>
+        <p><strong>Last bid: </strong><span>£{{ last_bid }}</span> ({{ last_bid.user }})</p>
+    </div>
+    {% if user.is_authenticated and auction.active %}
+        <div class="bid-form-wrapper">
+            <h2>How much you would pay for this? </h2>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ bid_form.as_p }}
+                <input type="submit" value="Place Bid">
+            </form> 
+            {% if error %}
+                <p id="bid-error">{{error}}</p>
+            {% endif %}
+        </div>
     {% endif %}
-
 </div>
-{% endif %}
+
 
 
 
 {% if comments %}
     <h3>Comments:</h3>
-    {% for comment in comments %}
-        <p><strong>{{ comment.title }} -- by {{ comment.user }}</strong></p>
-        <p>{{ comment.message }}</p>
-    {% endfor %}
+    <div class="comments-wrapper">
+        {% for comment in comments %}
+        <div class="comment-wrapper">
+            <div class="comment-user-pic">
+                <div class="username">{{comment.user}}</div>
+            </div>
+            <div class="comment-content">
+                <p><strong>{{ comment.title }}</strong></p>
+                <p>{{ comment.message }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 {% else%}
-    <h4>There are no comments yet</h4>
+    <h3 style="color: #ff9933;">There are no comments</h3>
 {% endif %}
 
 {% if user.is_authenticated and auction.active %}
 
-<h3>Do you want to leave a comment?: </h3>
+<h3 style="margin-bottom: 0px;">Do you want to leave a comment?</h3>
 <div class="wrapper-of-wrapper">
    <div class="form-wrapper">
-        <form method="POST" enctype="multipart/form-data">
+        <form class="form" style="margin-bottom: 30px;" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             {{ comment_form.as_p }}
             <input type="submit" value="Comment">

@@ -16,7 +16,7 @@ class Category(models.Model):
 class Auction(models.Model):
    user = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
    title = models.CharField(max_length=100, null=False)
-   description = models.TextField(null=False)
+   description = models.TextField(max_length=1000, null=False)
    initial_price = models.IntegerField(null=False)
    date = models.DateField(default=datetime.date.today)
    photo = models.ImageField(upload_to='pics/', null=True, blank=True)
@@ -43,8 +43,9 @@ class Bid(models.Model):
 class Comment(models.Model):
    user = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
    title = models.CharField(max_length=50)
-   message = models.TextField()
+   message = models.TextField(max_length=400)
    auction = models.ForeignKey(Auction, on_delete=models.CASCADE, null=False)
+   date = models.DateField(default=datetime.date.today)
    
    def __str__(self):
        return self.title
