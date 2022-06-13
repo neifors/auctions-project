@@ -22,6 +22,7 @@ class Auction(models.Model):
    photo = models.ImageField(upload_to='pics/', null=True, blank=True)
    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True)
    active = models.BooleanField(default=True)
+   last_bid = models.IntegerField(blank=True, null=True)
 
    def __str__(self):
        return self.title

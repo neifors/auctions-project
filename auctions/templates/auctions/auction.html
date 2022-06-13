@@ -14,7 +14,7 @@
         {% endif %}
     {% endif %}
 
-    {% if user.is_authenticated and not is_in_watchlist %}
+    {% if user.is_authenticated and auction.active and not is_in_watchlist %}
         <form  class="buttons" method="POST">
             {% csrf_token %}
             <input type="text" name="auction" value="" hidden>

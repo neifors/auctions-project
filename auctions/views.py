@@ -36,10 +36,12 @@ def show(request, id):
         if bid_form.is_valid():
             amount = bid_form.cleaned_data.get("amount")
             # If there is at least one bid done
-            if last_bid:
+            if last_bid != ['--']:
                 # Amount needs to be higher than that bid to save it
                 if amount>last_bid[0].amount:
                     Bid.objects.create(user_id=request.user.id,auction_id=id,amount=amount)
+                    auction.last_bid = amount
+                    auction.save()
                     return redirect ('auctions-show', id = id)
                 # If not, will show an error message
                 else:

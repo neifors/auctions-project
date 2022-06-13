@@ -108,9 +108,6 @@ div.auctions-wrapper a div.auction-wrapper {
    justify-content: flex-start;
    height: 375px;
    width: 300px;
-   border-radius: 8px;
-   /* background-color: #ffe066; */
-   border: 2px solid #ffe066;
    box-shadow: 0 4px 8px 0 rgba(66, 108, 45, 0.2), 0 6px 20px 0 rgba(34, 109, 39, 0.19);
    margin: 20px;
 }

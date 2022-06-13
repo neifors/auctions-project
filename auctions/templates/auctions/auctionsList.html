@@ -17,7 +17,11 @@
                     <div class="list-info-wrapper">
                         <div class="title-price">
                             <h2>{{auction.title}} </h2>
+                            {% if auction.last_bid %}
+                            <button> £{{auction.last_bid}}</button>
+                            {% else %}
                             <button> £{{auction.initial_price}}</button>
+                            {% endif %}
                         </div>
                         <p><span>Description: </span>{{auction.description}}</p> 
                     </div>
