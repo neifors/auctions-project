@@ -91,7 +91,7 @@ h3 {
 div.auctions-wrapper {
    display: flex;
    flex-direction: row-reverse;
-   flex-wrap: wrap;
+   flex-wrap: wrap-reverse;
    align-items: center;
    justify-content: space-around;
 }
@@ -168,7 +168,7 @@ div.auctions-wrapper a div.auction-wrapper div.list-info-wrapper p {
    margin: 0;
    overflow: hidden;
    display: -webkit-box;
-   -webkit-line-clamp: 4;
+   -webkit-line-clamp: 3;
    -webkit-box-orient: vertical;
 } 
 
@@ -335,8 +335,8 @@ form.buttons input[type="submit"] {
    border-radius: 7px;
    padding: 5px 8px;
    cursor: pointer;
-   font-size: 20px;
-   margin: 22px;
+   font-size: 16px;
+   margin: 20px 10px;
 }
 
 div.auction-img-info {
