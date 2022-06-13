@@ -2,62 +2,66 @@
 
 {% block content %}
 
-{% if user.is_authenticated and auction.active %}
-    {% if user == auction.user %}
-        <form method="POST">
+<div class="auction-buttons-wrapper">
+    {% if user.is_authenticated and auction.active %}
+        {% if user == auction.user %}
+            <form  class="buttons" method="POST">
+                {% csrf_token %}
+                <input type="text" name="auction" value="{{auction.id}}" hidden>
+                <input type="text" name="watchlist" value="" hidden>
+                <input type="submit" value="Close Auction">
+            </form>
+        {% endif %}
+    {% endif %}
+
+    {% if user.is_authenticated and auction.active and not is_in_watchlist %}
+        <form  class="buttons" method="POST">
             {% csrf_token %}
-            <input type="text" name="auction" value="{{auction.id}}" hidden>
-            <input type="text" name="watchlist" value="" hidden>
-            <input type="submit" value="Close Auction">
+            <input type="text" name="auction" value="" hidden>
+            <input type="text" name="watchlist" value="True" hidden>
+            <input type="submit" value="+ Watchlist">
         </form>
     {% endif %}
-{% endif %}
 
-{% if user.is_authenticated and auction.active and not is_in_watchlist %}
-    <form method="POST">
-        {% csrf_token %}
-        <input type="text" name="auction" value="" hidden>
-        <input type="text" name="watchlist" value="True" hidden>
-        <input type="submit" value="+ Watchlist">
-    </form>
-{% endif %}
-
-{% if user.is_authenticated and auction.active and is_in_watchlist %}
-    <form method="POST">
-        {% csrf_token %}
-        <input type="text" name="auction" value="" hidden>
-        <input type="text" name="watchlist" value="False" hidden>
-        <input type="submit" value="- Watchlist">
-    </form>
-{% endif %}
-
+    {% if user.is_authenticated and auction.active and is_in_watchlist %}
+        <form  class="buttons" method="POST">
+            {% csrf_token %}
+            <input type="text" name="auction" value="" hidden>
+            <input type="text" name="watchlist" value="False" hidden>
+            <input type="submit" value="- Watchlist">
+        </form>
+    {% endif %}
+</div>
 {% if not auction.active and last_bid.user == user %}
-    <h1>YOU ARE THE WINNER</h1>
+    <h1 id="winner">YOU ARE THE WINNER!</h1>
 {% endif %}
 
 <h2>{{auction.title}}</h2>
 <img style="width: 200px; height: 200px;" src="{{ auction.photo.url }}" alt="Product img">
 <p>Listed by {{ auction.user }}</p>
-<p>Description: {{ auction.description }}</p>
 <p>Date: {{ auction.date }}</p>
+<p>Description: {{ auction.description }}</p>
+<p>Category: {{ auction.category }}</p>
 <p>Initial price: £{{ auction.initial_price }}</p>
+<p>Total bids: {{ total_bids }}</p>
 <p>Last bid: £{{ last_bid }} <span>({{ last_bid.user }})</span></p>
 
 {% if user.is_authenticated and auction.active %}
+<div class="bid-form-wrapper">
     <h3>How much you would pay for this?: </h3>
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ bid_form.as_p }}
         <input type="submit" value="Place Bid">
     </form> 
+    {% if error %}
+        <p id="bid-error">{{error}}</p>
+    {% endif %}
+
+</div>
 {% endif %}
 
-{% if error %}
-    <p>{{error}}</p>
-{% endif %}
 
-<p>Total bids: {{ total_bids }}</p>
-<p>Category: {{ auction.category }}</p>
 
 {% if comments %}
     <h3>Comments:</h3>
