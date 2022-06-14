@@ -26,10 +26,11 @@
                 <a href="{% url 'auctions-home' %}"><img src="{% static 'img/icon.png' %}" alt="logo"></a>
                 <a class="link" href="{% url 'auctions-home' %}">Active Listing</a>
                 <a class="link" href="{% url 'auctions-closed' %}">Closed Listing</a>
-                <a class="link" href="{% url 'auctions-create' %}">Create Listing</a>
+                <a class="link" href="{% url 'auctions-categories' %}">Categories</a>
                 <a class="link" href="{% url 'auctions-watchlist' %}">Whachlist</a>
                 <a class="link" href="{% url 'auctions-mylistings' %}">My Listing</a>
-                <a class="link" href="{% url 'auctions-categories' %}">Categories</a>
+
+                <a class="link" href="{% url 'auctions-create' %}">Create Listing</a>
             </div>
             <div class="login-menu">
                 <a class="link" href="{% url 'logout' %}">Logout</a>
