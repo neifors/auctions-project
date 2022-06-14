@@ -260,6 +260,12 @@ div.auctions-wrapper a div.auction-wrapper img.closed-auct-btn {
    width: 200px;
 }
 
+div.auctions-wrapper h1#no-auctions.error {
+   color:#d4c486;
+   font-family: 'Joan', serif;
+   font-weight: lighter;
+}
+
 /* ------------- LOGOUT ------------- */
 
 div.logout-page-wrapper {

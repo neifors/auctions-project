@@ -30,8 +30,10 @@ Complete the implementation of your auction site. You must fulfill the following
 
 ## Extra (added by myself)
 
-- [ ] Manage messages for users. E.g. if user try to see all the active listings of one specific category and there is no one, user should see a message saying "No active listings for this category"
+- [x] Manage messages for users. E.g. if user try to see all the active listings of one specific category and there is no one, user should see a message saying "No active listings for this category"
 
-- [ ] Styling
+- [x] Styling
 
 - [x] Create separated page to closed auctions
+
+- [ ] Add profile page to allow the user set a profile picture to be showed in comments...

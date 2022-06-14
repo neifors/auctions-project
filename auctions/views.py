@@ -134,7 +134,7 @@ def categories(request):
 
 def by_category(request, id):
     data = {
-        'auctions' : Auction.objects.filter(category_id = id),
+        'auctions' : Auction.objects.filter(category_id = id, active=True),
         'category' : Category.objects.filter(id = id)[0].name.upper()
     }
     return render(request, 'auctions/by_category.html', data)
