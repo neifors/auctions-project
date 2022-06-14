@@ -1,21 +1,26 @@
 {% extends "auctions/layout.html" %}
 
 {% block content %}
+<h3>{{category}}</h3>
+
 
 <div class="auctions-wrapper">
    {% for auction in auctions %}
        <a href="{% url 'auctions-show' id=auction.id %}">
            <div class="auction-wrapper">
-               <div class="list-img-wrapper">
-                   <img src="{{auction.photo.url}}" alt="image">
-               </div>
-               <div class="list-info-wrapper">
-                   <div class="title-price">
-                       <h2>{{auction.title}} </h2>
-                       <button> £{{auction.initial_price}}</button>
-                   </div>
-                   <p><span>Description: </span>{{auction.description}}</p> 
-               </div>
+                <div class="list-img-wrapper">
+                    <img src="{{auction.photo.url}}" alt="image">
+                </div>
+                <div class="list-info-wrapper">
+                    {% if not auction.active %}
+                    <img class="closed-auct-btn" src="https://clipground.com/images/closed-png-6.png"/>
+                    {% endif %}
+                    <div class="title-price">
+                        <h2>{{auction.title}} </h2>
+                        <button> £{{auction.initial_price}}</button>
+                    </div>
+                    <p><span>Description: </span>{{auction.description}}</p> 
+                </div>
            </div>
        </a>
    {% endfor %}

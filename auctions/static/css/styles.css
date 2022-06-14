@@ -248,6 +248,18 @@ div#categories-wrapper a div.category-card img {
    width: 150px;
 }
 
+div.auctions-wrapper a div.auction-wrapper img.closed-auct-btn {
+   position: absolute;
+   background-color: none;
+   border: none;
+   border-radius: 7px;
+   padding: 5px 8px;
+   cursor: pointer;
+   font-size: 12px;
+   margin-top: -55px;
+   width: 200px;
+}
+
 /* ------------- LOGOUT ------------- */
 
 div.logout-page-wrapper {
@@ -399,9 +411,11 @@ div.comments-wrapper div.comment-wrapper{
 }
 
 div.comments-wrapper div.comment-wrapper div.comment-user-pic{
-   width: 20vw;
+   width: 10vw;
    display: flex;
    justify-content: center;
+   margin: 0;
+   padding: 0;
 }
 
 div.comments-wrapper div.comment-wrapper div.comment-user-pic div.username{
@@ -413,9 +427,12 @@ div.comments-wrapper div.comment-wrapper div.comment-user-pic div.username{
    width: 100px;
    height: 100px;
    border-radius: 50px;
-   margin-left: 50px;
+   /* margin-left: 50px; */
 }
 
 div.comments-wrapper div.comment-wrapper div.comment-content {
    width: 80vw;
+   box-shadow: 0 4px 8px 0 rgba(66, 108, 45, 0.2), 0 6px 20px 0 rgba(34, 109, 39, 0.19);
+   padding-left: 30px;
+   
 }

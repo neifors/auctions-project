@@ -11,6 +11,9 @@
                     <img src="{{auction.photo.url}}" alt="image">
                 </div>
                 <div class="list-info-wrapper">
+                    {% if not auction.active %}
+                    <img class="closed-auct-btn" src="https://clipground.com/images/closed-png-6.png"/>
+                    {% endif %}
                     <div class="title-price">
                         <h2>{{auction.title}} </h2>
                         <button> £{{auction.initial_price}}</button>
